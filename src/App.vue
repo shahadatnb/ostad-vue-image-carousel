@@ -23,11 +23,11 @@
     const currentIndex = ref(0);
 
     const prevImage = () => {
-      currentIndex.value = (currentIndex.value - 1 + images.value.length) % images.value.length;
+      currentIndex.value = (currentIndex.value - 1 + images.length) % images.length;
     };
 
     const nextImage = () => {
-      currentIndex.value = (currentIndex.value + 1) % images.value.length;
+      currentIndex.value = (currentIndex.value + 1) % images.length;
     };
 
 </script>
@@ -36,7 +36,7 @@
 
 <div class="carousel">
     <div class="carousel-inner">
-      <img v-for="(image, index) in images" :key="index" :src="image" :class="{ active: index === currentIndex }" />
+      <img v-for="(image, index) in images" :key="index" :src="image.full" :class="{ active: index === currentIndex }" />
     </div>
     <button class="carousel-control-prev" @click="prevImage">Previous</button>
     <button class="carousel-control-next" @click="nextImage">Next</button>
