@@ -36,7 +36,7 @@
 
 <div class="carousel">
     <div class="carousel-inner">
-      <img v-for="(image, index) in images" :key="index" :src="image.full" :class="{ active: index === currentIndex }" />
+      <img v-for="(image, index) in images" :key="index" :src="image.full" v-show="index === currentIndex" />
     </div>
     <button class="carousel-control-prev" @click="prevImage">Previous</button>
     <button class="carousel-control-next" @click="nextImage">Next</button>
@@ -45,9 +45,6 @@
 </template>
 
 <style scoped>
-    .carousel {
-    position: relative;
-    }
 
     .carousel-inner {
     display: flex;
@@ -55,13 +52,8 @@
     }
 
     .carousel-inner img {
-    display: none;
     max-width: 100%;
     height: auto;
-    }
-
-    .carousel-inner img.active {
-    display: block;
     }
 
     .carousel-control-prev,
